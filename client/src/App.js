@@ -1,9 +1,10 @@
 import React from 'react';
+import Card from './components/Card';
 
 const App = () => {
   return (
       <>
-          <div className="bg-black text-3xl text-white">App</div>
+        <Card />
       </>
 
   )
