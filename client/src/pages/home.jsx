@@ -1,11 +1,20 @@
-import React from 'react';
+import React,{ useState, useEffect} from 'react';
+import axios from 'axios'
+import Card from '../components/Card';
 
-const home = () => {
+const config = {
+    headers: {
+        'location':'sydney'
+    }
+}
+
+const Home = () => {
+  
   return (
-    <div>
+    <div className="w-9/12 bg-black place-content-center">
         
     </div>
     );
 };
 
-export default home;
+export default Home;
