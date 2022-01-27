@@ -36,7 +36,7 @@ const WeatherContextProvider = ({ children }) => {
     error: null,
     location: localStorage.getItem("saved-location")
       ? JSON.parse(localStorage.getItem("saved-location"))
-      : "london",
+      : "sydney",
     day: 0,
     currentWeather:null,
     forecastWeather: null,

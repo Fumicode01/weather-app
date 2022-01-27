@@ -1,19 +1,23 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import axios from 'axios'
 
 import { WeatherContext } from './contexts/WeatherContext';
-import Home from './pages/Home';
+import Card from './components/Card';
+import CurrentWeather from './components/CurrentWeather';
 
-const config = {
-    headers: {
-        'location':'sydney'
-    }
-}
 
 const App = () => {
     const { state, dispatch } = useContext(WeatherContext);
     // const current = state.currentWeather
-    // const forecast =state.forecastWeather
+    const forecastWeathers =state.forecastWeather
+    const location = state.location
+    console.log(location);
+
+    const config = {
+        headers: {
+            'location':location
+        }
+    }
    
     // useEffect (() => {
     //     console.log("current :", current)
@@ -26,6 +30,7 @@ const App = () => {
             dispatch({ type: "LOADING", payload: true });
             const tempForecast = []
             const response = await axios.get(`http://localhost:5000/`, config)
+            console.log(response);
             let currentWeatherData = {
                 temp:response.data.current.temp_c,
                 condition:response.data.current.condition.text,
@@ -46,13 +51,13 @@ const App = () => {
         }
         await getWeather()
         dispatch({ type: "LOADING", payload: false });
-    },[])
+    },[location])
 
 
   return (
-      <div className="">
-          sample
-        <Home />
+      <div className="flex flex-col justify-center items-center">
+        <CurrentWeather />
+        <Card />
       </div>
 
   )

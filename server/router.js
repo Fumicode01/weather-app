@@ -5,8 +5,7 @@ const fetch = require('node-fetch');
 let router = express.Router();
 
 router.get('/', async (req, res) => {
-    const location = await req.headers.location;
-    console.log(location);
+    const location = await req.headers.location
     const key = process.env.API_KEY
     const url = `http://api.weatherapi.com/v1/forecast.json?key=${key}&q=${location}&days=3&api=yes&alerts=no`
 
